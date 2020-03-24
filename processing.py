@@ -10,8 +10,6 @@ df['ndaychg'] = df['day_chg'].shift(-ndayforward)
 dcriteria = (df.index >= '2000-05-05') & (df.index <= dt.datetime.today())
 tcriteria = df['day_chg'] < -1
 criteria = (dcriteria & tcriteria)
-#print (df[criteria].tail())
-#print (df[criteria].loc[:, ['close', 'ndaychg']].agg(['mean', 'median', 'std']))
 dfc = (df[criteria].loc[:, ['close', 'ndaychg']].agg(['mean', 'median', 'std']))
 dfc.to_excel(data_source2)
 wb = xlrd.open_workbook(data_source2)
